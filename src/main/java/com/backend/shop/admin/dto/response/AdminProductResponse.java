@@ -1,19 +1,13 @@
-package com.backend.shop.admin.model;
+package com.backend.shop.admin.dto.response;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "product")
+@Builder
 @Getter
-@Setter
-public class AdminProduct {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AdminProductResponse {
     private Long id;
     private String name;
     private String category;

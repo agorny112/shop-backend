@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
+
 @Service
 @RequiredArgsConstructor
 public class AdminProductService {
@@ -36,9 +38,10 @@ public class AdminProductService {
         AdminProduct productToModify = adminProductRepository.findById(id).orElseThrow();
         productToModify.setName(request.getName());
         productToModify.setDescription(request.getDescription());
-        productToModify.setCurrency(request.getCurrency());
+        productToModify.setCurrency(request.getCurrency().toUpperCase(Locale.ROOT));
         productToModify.setPrice(request.getPrice());
         productToModify.setCategory(request.getCategory());
-        return adminProductConverter.toDto(productToModify);
+        AdminProduct modifiedProduct = adminProductRepository.save(productToModify);
+        return adminProductConverter.toDto(modifiedProduct);
     }
 }

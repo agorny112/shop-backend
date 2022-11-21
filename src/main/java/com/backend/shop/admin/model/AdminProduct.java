@@ -1,15 +1,13 @@
 package com.backend.shop.admin.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product")
-@Getter
-@Setter
+@Data
 public class AdminProduct {
 
     @Id

@@ -27,6 +27,7 @@ public class AdminProductController {
     public AdminProductResponse addProduct(@RequestBody AdminProductRequest request){
         return adminProductService.createProduct(request);
     }
+
     @PutMapping("/admin/products/{id}")
     public AdminProductResponse updateProduct(@RequestBody AdminProductRequest request, @PathVariable Long id){
         return adminProductService.updateProduct(request, id);

@@ -5,6 +5,8 @@ import com.backend.shop.admin.dto.response.AdminProductResponse;
 import com.backend.shop.admin.model.AdminProduct;
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
+
 @Service
 public class AdminProductConverter implements Convertable<AdminProductRequest, AdminProduct, AdminProductResponse>{
 
@@ -14,7 +16,7 @@ public class AdminProductConverter implements Convertable<AdminProductRequest, A
         adminProduct.setPrice(adminProductRequest.getPrice());
         adminProduct.setName(adminProductRequest.getName());
         adminProduct.setCategory(adminProductRequest.getCategory());
-        adminProduct.setCurrency(adminProductRequest.getCurrency());
+        adminProduct.setCurrency(adminProductRequest.getCurrency().toUpperCase(Locale.ROOT));
         adminProduct.setDescription(adminProductRequest.getDescription());
         return adminProduct;
     }

@@ -1,6 +1,6 @@
 package com.backend.shop.product.controller;
 
-import com.backend.shop.product.model.Product;
+import com.backend.shop.product.dto.ProductResponse;
 import com.backend.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,8 +16,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/products")
-    public Page<Product> getProducts(Pageable pageable) {
-
+    public Page<ProductResponse> getProducts(Pageable pageable) {
         return productService.getProducts(pageable);
     }
 }

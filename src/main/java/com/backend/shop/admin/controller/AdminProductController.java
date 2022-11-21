@@ -22,6 +22,7 @@ public class AdminProductController {
     public AdminProductResponse getProduct(@PathVariable Long id){
         return adminProductService.getProduct(id);
     }
+
     @PostMapping("/admin/products")
     public AdminProductResponse addProduct(@RequestBody AdminProductRequest request){
         return adminProductService.createProduct(request);

@@ -7,11 +7,8 @@ import com.backend.shop.admin.repository.AdminProductRepository;
 import com.backend.shop.admin.service.converter.AdminProductConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,9 +18,8 @@ public class AdminProductService {
     private final AdminProductConverter adminProductConverter;
 
     public Page<AdminProductResponse> getProducts(Pageable pageable) {
-        return new PageImpl<>(adminProductRepository.findAll(pageable)
-                .stream().map(adminProductConverter::toDto)
-                .collect(Collectors.toList()));
+        return adminProductRepository.findAll(pageable)
+                .map(adminProductConverter::toDto);
     }
 
     public AdminProductResponse getProduct(Long id) {

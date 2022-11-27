@@ -18,6 +18,7 @@ public class AdminProductController {
     public Page<AdminProductResponse> getProducts(Pageable pageable){
         return adminProductService.getProducts(pageable);
     }
+    
     @GetMapping("/admin/products/{id}")
     public AdminProductResponse getProduct(@PathVariable Long id){
         return adminProductService.getProduct(id);

@@ -15,9 +15,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductConverter productConverter;
 
-
     public Page<ProductResponse> getProducts(Pageable pageable) {
         return productRepository.findAll(pageable).map(productConverter::toDto);
-
     }
 }
